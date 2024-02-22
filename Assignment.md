@@ -4,7 +4,8 @@
 #### Parameter vs Argument 
  - 
 #### Functional programming concepts
-- Currying =- Partial application =
+- Currying =
+- Partial application =
 
 ##### References
 1. 
