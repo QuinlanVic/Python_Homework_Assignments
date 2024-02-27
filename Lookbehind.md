@@ -12,4 +12,5 @@ Lookbehind looks behind the cursor. They can be positive or negative.
 - (?<!foo)bar -> finds the 2nd bar ("bar" which does not have "foo" before it)
 
 #### References
-1. https://www.regular-expressions.info/lookaround.html 
+1. https://www.regular-expressions.info/lookaround.html
+2. https://stackoverflow.com/questions/2973436/regex-lookahead-lookbehind-and-atomic-groups
