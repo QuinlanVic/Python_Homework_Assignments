@@ -73,7 +73,7 @@ Through the examples it is clear that the `@property` decorator is a useful tool
 
 ### `@balance.setter` Definition
 - `@balance.setter` is a decorator that is often used to provide functionality to a Bank class example's balance attribute in order for it to act as a "setter" function.
-- For example, we may have a defined Bank class with the code below.
+- For example, we may have a defined a Bank class with the code below and added an `@balance.setter` decorator to print errors when a negative balance is attempted to be set, a negative deposit or withdrawal is attempted or a withdrawal greater than the balance in the account is attempted.
 
 ### `@balance.setter` Example
 ```
@@ -82,24 +82,42 @@ class Bank:
         self.accno = accno
         self.name = name
         self._balance = balance # protected variable
-	
+    @property
+    def balance(self):
+        return self._balance
+    @balance.setter
+    def balance(self, value):
+        if value < 0:
+            raise ValueError(f"{value} is not a valid input for balance")
+        self._balance = value
+
     # instance method | self -> instance/object
     def display_balance(self):
         return f"Your balance is: R{self.__balance:,}"
 	
     def withdraw(self, withdrawal):
-        if withdrawal > self.__balance:
-            return f"Insufficient funds (R{self.__balance:,}) to make this withdrawal (R{withdrawal:,})"
-        else:
-            self.__balance -= withdrawal
-            return f"Success. {self.display_balance()}"
+        if withdrawal < 0:
+            raise VaueError(f"Insufficient funds (R{self.__balance:,}) to make this withdrawal (R{withdrawal:,})")
+	if withdrawal > self.balance:
+	    raise ValueError(f"Insufficient funds (R{self.__balance:,}) to make this withdrawal (R{withdrawal:,})")
+    	self.__balance -= withdrawal
+    	return f"Success. {self.display_balance()}"
 	    
     def deposit(self, depositamount):
         if depositamount < 0:
-            return f"Invalid deposit amount of R{depositamount:,}"
-        else:
-            self.__balance += depositamount
-            return f"Success. {self.display_balance()}"
+            raise ValueError(f"Invalid deposit amount of R{depositamount:,}")
+	self.__balance += depositamount
+	return f"Success. {self.display_balance()}"
+```
+Below is an example of how to class and its attributes may be used with the `@balance.setter` decorator in play:
+```
+gemma = Bank(123, "Gemma Porrill", 15_000)
+print(gemma.balance) # 15_000
+gemma.deposit(1100) 
+print(gemma.balance)     # 16_100
+gemma.withdraw(20000)    # ValueError: 
+gemma.deposit(-100)      # ValueError: -100 is not a valid input for amount
+gemma.deposit("100")     # ValueError: 100 is not a valid input for amount
 ```
 
 #### References
