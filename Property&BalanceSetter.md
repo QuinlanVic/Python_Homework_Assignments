@@ -11,7 +11,7 @@
 	- These advantages make properties a helpful tool allowing you to write more concise and readable code.
 
 ### `@property` Simple Example
-<code>
+```
 """Decorator example using function to illustrate meaning"""
 # decorator function that accepts a function as an argument ("f")
 def decorator(f):
@@ -25,29 +25,30 @@ def decorator(f):
 def initial_function():
     print("Initial Functionality")
 initial_function()
-</code>
-Output: 
-Extra Functionality
+```
+
+**Output:** <br>
+Extra Functionality<br>
 Initial Functionality
 
 ### `@property` Real-World Example
 Let us say we have a "Car" class with a constrctor as follows.
-<code>
+```
 """Decorator function usage in a class Real-World example to further illustrate meaning and fully elaborate on its usefulness"""
 class Car:
 	def __init__(self, price):
 		self.price = price
-</code>
+```
 If we want the price attribute to be "protected" (only available to classes and subclasses) but need to access and modify it outside of the class we would need to use "getter" and "setter" functions.
 If there is existing code in the program that accesses or modifies the value of the attribute it will have to be modified to call "getter" or "setter" functions, respectively, or the code will break. 
 With `@property`, you will not need to modify any of those lines because you will be able to add "getters" and "setters" *behind the scenes* without affecting the syntax that you used to access or modify the attribute when it was public.
-<code>
-\# getter
+```
+# getter
 @property
 def price(self): # getter name is the same as the property we wish to access
 	return self._price
  
-\# name of property is used for setter and deleter
+# name of property is used for setter and deleter
 @price.setter
 def price(self, new_price):
 	if new_price > 0 and isinstance(new_price, float):
@@ -58,15 +59,15 @@ def price(self, new_price):
 @price.deleter
 def price(self):
 	del self._price
-</code>
+```
 
 How it may be used for example:
-<code>
+```
 car = Car(100000.0) # Create instance of Car class
 car.price           # Access value
 car.price = 75000   # Update value
-</code>
-ouput = 100000.0
+```
+**Ouput: 100000.0**
 Through the examples it is clear that the `@property` decorator is a useful tool for implementing new functionalities to existing functions and improving readability and code size.
 
 
@@ -75,14 +76,12 @@ Through the examples it is clear that the `@property` decorator is a useful tool
 - For example, we may have a defined Bank class with the code below.
 
 ### `@balance.setter` Example
-<code>
+```
 class Bank:
     def __init__(self, accno, name, balance):  
-        # instance variables | unique values for each instance
         self.accno = accno
         self.name = name
-        # protected variable
-        self._balance = balance
+        self._balance = balance # protected variable
 	
     # instance method | self -> instance/object
     def display_balance(self):
@@ -93,12 +92,6 @@ class Bank:
             return f"Insufficient funds (R{self.__balance:,}) to make this withdrawal (R{withdrawal:,})"
         else:
             self.__balance -= withdrawal
-            # Get today's date
-            now = datetime.now()
-            format = "%d %b"
-            nicedate = now.strftime(format)
-            self.numtransactions += 1
-            self.statement(self.numtransactions, nicedate, "withdraw", withdrawal)
             return f"Success. {self.display_balance()}"
 	    
     def deposit(self, depositamount):
@@ -106,16 +99,8 @@ class Bank:
             return f"Invalid deposit amount of R{depositamount:,}"
         else:
             self.__balance += depositamount
-            # Get today's date
-            now = datetime.now()
-            format = "%d %b"
-            nicedate = now.strftime(format)
-            self.numtransactions += 1
-            self.statement(self.numtransactions, nicedate, "deposit", depositamount)
             return f"Success. {self.display_balance()}"
-
-</code>
-
+```
 
 #### References
 1. https://www.freecodecamp.org/news/python-property-decorator/#:~:text=The%20%40property%20is%20a%20built,define%20properties%20in%20a%20class.
