@@ -54,12 +54,13 @@ def price(self, new_price):
 def price(self):
 	del self._price
 </code>
+
 How it may be used for example:
 <code>
->>> car = Car(100000.0) # Create instance of Car class
->>> car.price            # Access value
-ouput = 100000.0
+car = Car(100000.0) # Create instance of Car class
+car.price            # Access value
 </code>
+ouput = 100000.0
 
 ### balance.setter Definition
 - balance.setter
