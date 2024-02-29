@@ -7,8 +7,8 @@
   - `@property` is a built-in decorator for the `property()` function in Python.
   - A decorator function adds new functionality to an existing function, which is passed to it as an argument, without modifying the existing function at all.
   - The only addition to the existing function is adding "@decorator" above its declaration which results in the decorator function only being run when the existing function is called.
-  - the @property decorator is used to provide "special" functionality to certain attributes/methods to make them act as "getters", "setters", or "deleters" when we define properties in a class.
-  - By using @property, you can "reuse" the name of a property to avoid creating new names for the getters, setters, and deleters
+  - The @property decorator is used to provide "special" functionality to certain attributes/methods to make them act as "getters", "setters", or "deleters" when we define properties in a class.
+  - By using @property, you can "reuse" the name of a property to avoid creating new names for the "getters", "setters", and "deleters"
   - These advantages make properties a helpful tool allowing you to write more concise and readable code
 
 ### @property Simple Example
@@ -28,14 +28,15 @@ initial_function()
 </code>
 
 ### @property Real-World Example
-Consider us having a "Car" class with a constrctor as follows.
+Let us say we a "Car" class with a constrctor as follows.
 <code>
 class Car:
 	def __init__(self, price):
 		self.price = price
 </code>
-What if we wanted this price value to be protected and we require the new value to be validated before assigning it.
-At this point, if you decide to add getters and setters, you and your team will probably panic ?. This is because each line of code that accesses or modifies the value of the attribute will have to be modified to call the getter or setter, respectively. Otherwise, the code will break . With @property, you and your team will not need to modify any of those lines because you will able to add getters and setters "behind the scenes" without affecting the syntax that you used to access or modify the attribute when it was public.
+What if we wanted this price value to be "protected" (only available to classes and subclasses) and we require the new value to be validated before assigning it.
+If you want to add getters and setters -> each line of code that accesses or modifies the value of the attribute will have to be modified to call the getter or setter, respectively. Otherwise, the code will break. 
+With @property, you will not need to modify any of those lines because you will be able to add getters and setters "behind the scenes" without affecting the syntax that you used to access or modify the attribute when it was public.
 <code>
 \# getter
 @property
