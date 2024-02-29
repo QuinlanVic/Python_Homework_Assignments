@@ -6,10 +6,10 @@
 - `@property`
   - `@property` is a built-in decorator for the `property()` function in Python.
   - A decorator function adds new functionality to an existing function, which is passed to it as an argument, without modifying the existing function at all.
-  - The only addition to the existing function is adding the "@decorator" syntax above its declaration which causes the decorator function to only be run when the existing function is called.
-  - the @property decorator is used to provide "special" functionality to certain methods to make them act as getters, setters, or deleters when we define properties in a class.
+  - The only addition to the existing function is adding "@decorator" above its declaration which results in the decorator function only being run when the existing function is called.
+  - the @property decorator is used to provide "special" functionality to certain attributes/methods to make them act as "getters", "setters", or "deleters" when we define properties in a class.
   - By using @property, you can "reuse" the name of a property to avoid creating new names for the getters, setters, and deleters
-  - These advantages make properties a really awesome tool to help you write more concise and readable code
+  - These advantages make properties a helpful tool allowing you to write more concise and readable code
 
 ### @property Simple Example
 <code>
@@ -35,6 +35,23 @@ class Car:
 		self.price = price
 </code>
 What if we wanted this price value to be protected and we require the new value to be validated before assigning it.
+At this point, if you decide to add getters and setters, you and your team will probably panic ?. This is because each line of code that accesses or modifies the value of the attribute will have to be modified to call the getter or setter, respectively. Otherwise, the code will break . With @property, you and your team will not need to modify any of those lines because you will able to add getters and setters "behind the scenes" without affecting the syntax that you used to access or modify the attribute when it was public.
+<code>
+@property
+def price(self):
+	return self._price
+
+@price.setter
+def price(self, new_price):
+	if new_price > 0 and isinstance(new_price, float):
+		self._price = new_price
+	else:
+		print("Please enter a valid price")
+
+@price.deleter
+def price(self):
+	del self._price
+</code>
 
 ### balance.setter Definition
 - balance.setter
