@@ -1,18 +1,18 @@
-# @property Decorator and Balance.setter in Python OOP
+# `@property` and `@balance.setter` decorators in Python OOP
 ## SDDA - 29 February 2024
 ### By: Quinlan Caiger
 
 ### `@property` Definition
-- `@property`
-  - `@property` is a built-in decorator for the `property()` function in Python.
-  - A decorator function adds new functionality to an existing function, which is passed to it as an argument, without modifying the existing function at all.
-  - The only addition to the existing function is adding "@decorator" syntax above its declaration which results in the decorator function only being run when the existing function is called.
-  - The @property decorator is used to provide "special" functionality to certain attributes/methods to make them act as "getters", "setters", or "deleters" when we define properties in a class.
-  - By using @property, you can "reuse" the name of a property to avoid creating new names for the "getters", "setters", and "deleters".
-  - These advantages make properties a helpful tool allowing you to write more concise and readable code.
+- `@property` is a built-in decorator for the `property()` function in Python.
+- A decorator function adds new functionality to an existing function, which is passed to it as an argument, without modifying the existing function at all.
+- The only addition to the existing function is adding the "@decorator" syntax above its declaration which results in the decorator function only being run when the existing function is called.
+- The `@property` decorator is used to provide "special" functionality to certain attributes/methods to make them act as "getters", "setters", or "deleters" when we define properties in a class.
+- By using `@property`, you can "reuse" the name of a property to avoid creating new names for the "getters", "setters", and "deleters".
+	- These advantages make properties a helpful tool allowing you to write more concise and readable code.
 
-### @property Simple Example
+### `@property` Simple Example
 <code>
+"""Decorator example using function to illustrate meaning"""
 # decorator function that accepts a function as an argument ("f")
 def decorator(f):
     def new_function():
@@ -26,16 +26,20 @@ def initial_function():
     print("Initial Functionality")
 initial_function()
 </code>
+Output: 
+Extra Functionality
+Initial Functionality
 
-### @property Real-World Example
-Let us say we a "Car" class with a constrctor as follows.
+### `@property` Real-World Example
+Let us say we have a "Car" class with a constrctor as follows.
 <code>
+"""Decorator function usage in a class Real-World example to further illustrate meaning and fully elaborate on its usefulness"""
 class Car:
 	def __init__(self, price):
 		self.price = price
 </code>
-What if we wanted this price value to be "protected" (only available to classes and subclasses) and we require to access and modify it outside of the class.
-If you want to add "getters" and "setters" -> each line of code that accesses or modifies the value of the attribute will have to be modified to call the getter or setter, respectively or the code will break. 
+If we want the price attribute to be "protected" (only available to classes and subclasses) but need to access and modify it outside of the class we would need to use "getter" and "setter" functions.
+If there is existing code in the program that accesses or modifies the value of the attribute it will have to be modified to call "getter" or "setter" functions, respectively, or the code will break. 
 With `@property`, you will not need to modify any of those lines because you will be able to add "getters" and "setters" *behind the scenes* without affecting the syntax that you used to access or modify the attribute when it was public.
 <code>
 \# getter
@@ -63,12 +67,54 @@ car.price           # Access value
 car.price = 75000   # Update value
 </code>
 ouput = 100000.0
+Through the examples it is clear that the `@property` decorator is a useful tool for implementing new functionalities to existing functions and improving readability and code size.
 
-### balance.setter Definition
-- balance.setter
-  - balance.setter is 
 
-### balance.setter Example
+### `@balance.setter` Definition
+- `@balance.setter` is a decorator that is often used to provide functionality to a Bank class example's balance attribute in order for it to act as a "setter" function.
+- For example, we may have a defined Bank class with the code below.
+
+### `@balance.setter` Example
+<code>
+class Bank:
+    def __init__(self, accno, name, balance):  
+        # instance variables | unique values for each instance
+        self.accno = accno
+        self.name = name
+        # protected variable
+        self._balance = balance
+	
+    # instance method | self -> instance/object
+    def display_balance(self):
+        return f"Your balance is: R{self.__balance:,}"
+	
+    def withdraw(self, withdrawal):
+        if withdrawal > self.__balance:
+            return f"Insufficient funds (R{self.__balance:,}) to make this withdrawal (R{withdrawal:,})"
+        else:
+            self.__balance -= withdrawal
+            # Get today's date
+            now = datetime.now()
+            format = "%d %b"
+            nicedate = now.strftime(format)
+            self.numtransactions += 1
+            self.statement(self.numtransactions, nicedate, "withdraw", withdrawal)
+            return f"Success. {self.display_balance()}"
+	    
+    def deposit(self, depositamount):
+        if depositamount < 0:
+            return f"Invalid deposit amount of R{depositamount:,}"
+        else:
+            self.__balance += depositamount
+            # Get today's date
+            now = datetime.now()
+            format = "%d %b"
+            nicedate = now.strftime(format)
+            self.numtransactions += 1
+            self.statement(self.numtransactions, nicedate, "deposit", depositamount)
+            return f"Success. {self.display_balance()}"
+
+</code>
 
 
 #### References
