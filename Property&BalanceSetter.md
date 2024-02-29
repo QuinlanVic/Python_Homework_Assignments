@@ -65,15 +65,17 @@ How it may be used for example:
 ```
 car = Car(100000.0) # Create instance of Car class
 car.price           # Access value
-car.price = 75000   # Update value
+car.price = 75000.0 # Update value
+print(car.price)    # 75000.0
 ```
-**Ouput: 100000.0**
+**Ouput: 75000.0**<br>
 Through the examples it is clear that the `@property` decorator is a useful tool for implementing new functionalities to existing functions and improving readability and code size.
 
 
 ### `@balance.setter` Definition
-- `@balance.setter` is a decorator that is often used to provide functionality to a Bank class example's balance attribute in order for it to act as a "setter" function.
-- For example, we may have a defined a Bank class with the code below and added an `@balance.setter` decorator to print errors when a negative balance is attempted to be set, a negative deposit or withdrawal is attempted or a withdrawal greater than the balance in the account is attempted.
+- The `@balance.setter` example below illustrates how a `@property` decorator can be used to provide functionality to a Bank class example's "balance" attribute in order for it to act as a "setter" (in the same way as `@price.setter` adds functionality to the Car class's "price" attribute in the example above).
+- For example, we may have a defined a Bank class with the code below and added a `@balance.setter` decorator to be able to accesss a protected "balance" attribute and print errors when a negative balance is attempted to be set, a negative deposit or withdrawal is attempted or a withdrawal greater than the balance in the account is attempted.
+
 
 ### `@balance.setter` Example
 ```
@@ -84,11 +86,11 @@ class Bank:
         self._balance = balance  # protected variable
 
     @property
-    def balance(self):
+    def balance(self): # used as a getter
         return self._balance
 
     @balance.setter
-    def balance(self, value):
+    def balance(self, value): # used as a setter
         if value < 0:
             raise ValueError(f"{value} is not a valid input for balance")
         self._balance = value
@@ -115,15 +117,16 @@ class Bank:
     def display_balance(self):
         return f"Your balance is: R{self._balance:,}"
 ```
-Below is an example of how to class and its attributes may be used with the `@balance.setter` decorator in play:
+Below is an example of how the class and its attributes may be used with the `@balance.setter` decorator in play:
 ```
 gemma = Bank(123, "Gemma Porrill", 15_000)
-print(gemma.balance)  # 15000
+print(gemma.balance)    # 15000
 gemma.deposit(1100)
-print(gemma.balance)  # 16100
+print(gemma.balance)    # 16100
 # gemma.withdraw(20000) # ValueError: Insufficient funds (R16,100) to make this withdrawal (R20,000)
 # gemma.deposit(-100)   # ValueError: Invalid deposit amount of R-100
 ```
 
 #### References
 1. https://www.freecodecamp.org/news/python-property-decorator/#:~:text=The%20%40property%20is%20a%20built,define%20properties%20in%20a%20class.
+2. https://medium.com/@pijpijani/understanding-property-in-python-getters-and-setters-b65b0eee62f9
