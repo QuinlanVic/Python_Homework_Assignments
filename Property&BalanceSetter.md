@@ -42,7 +42,8 @@ With `@property`, you will not need to modify any of those lines because you wil
 @property
 def price(self): # getter name is the same as the property we wish to access
 	return self._price
-
+ 
+\# name of property is used for setter and deleter
 @price.setter
 def price(self, new_price):
 	if new_price > 0 and isinstance(new_price, float):
@@ -58,7 +59,8 @@ def price(self):
 How it may be used for example:
 <code>
 car = Car(100000.0) # Create instance of Car class
-car.price            # Access value
+car.price           # Access value
+car.price = 75000   # Update value
 </code>
 ouput = 100000.0
 
