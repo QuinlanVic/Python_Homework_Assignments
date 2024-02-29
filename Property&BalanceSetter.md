@@ -34,13 +34,13 @@ class Car:
 	def __init__(self, price):
 		self.price = price
 </code>
-What if we wanted this price value to be "protected" (only available to classes and subclasses) and we require the new value to be validated before assigning it.
+What if we wanted this price value to be "protected" (only available to classes and subclasses) and we require to access and modify it.
 If you want to add getters and setters -> each line of code that accesses or modifies the value of the attribute will have to be modified to call the getter or setter, respectively. Otherwise, the code will break. 
 With @property, you will not need to modify any of those lines because you will be able to add getters and setters "behind the scenes" without affecting the syntax that you used to access or modify the attribute when it was public.
 <code>
 \# getter
 @property
-def price(self):
+def price(self): # getter name is the same as the property we wish to access
 	return self._price
 
 @price.setter
