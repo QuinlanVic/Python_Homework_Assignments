@@ -6,7 +6,7 @@
 - `@property`
   - `@property` is a built-in decorator for the `property()` function in Python.
   - A decorator function adds new functionality to an existing function, which is passed to it as an argument, without modifying the existing function at all.
-  - The only addition to the existing function is adding "@decorator" above its declaration which results in the decorator function only being run when the existing function is called.
+  - The only addition to the existing function is adding "@decorator" syntax above its declaration which results in the decorator function only being run when the existing function is called.
   - The @property decorator is used to provide "special" functionality to certain attributes/methods to make them act as "getters", "setters", or "deleters" when we define properties in a class.
   - By using @property, you can "reuse" the name of a property to avoid creating new names for the "getters", "setters", and "deleters".
   - These advantages make properties a helpful tool allowing you to write more concise and readable code.
