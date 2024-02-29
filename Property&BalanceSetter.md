@@ -8,8 +8,8 @@
   - A decorator function adds new functionality to an existing function, which is passed to it as an argument, without modifying the existing function at all.
   - The only addition to the existing function is adding "@decorator" above its declaration which results in the decorator function only being run when the existing function is called.
   - The @property decorator is used to provide "special" functionality to certain attributes/methods to make them act as "getters", "setters", or "deleters" when we define properties in a class.
-  - By using @property, you can "reuse" the name of a property to avoid creating new names for the "getters", "setters", and "deleters"
-  - These advantages make properties a helpful tool allowing you to write more concise and readable code
+  - By using @property, you can "reuse" the name of a property to avoid creating new names for the "getters", "setters", and "deleters".
+  - These advantages make properties a helpful tool allowing you to write more concise and readable code.
 
 ### @property Simple Example
 <code>
@@ -53,6 +53,12 @@ def price(self, new_price):
 @price.deleter
 def price(self):
 	del self._price
+</code>
+How it may be used for example:
+<code>
+>>> car = Car(100000.0) # Create instance of Car class
+>>> car.price            # Access value
+ouput = 100000.0
 </code>
 
 ### balance.setter Definition
