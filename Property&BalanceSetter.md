@@ -37,6 +37,7 @@ class Car:
 What if we wanted this price value to be protected and we require the new value to be validated before assigning it.
 At this point, if you decide to add getters and setters, you and your team will probably panic ?. This is because each line of code that accesses or modifies the value of the attribute will have to be modified to call the getter or setter, respectively. Otherwise, the code will break . With @property, you and your team will not need to modify any of those lines because you will able to add getters and setters "behind the scenes" without affecting the syntax that you used to access or modify the attribute when it was public.
 <code>
+\# getter
 @property
 def price(self):
 	return self._price
