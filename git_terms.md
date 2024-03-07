@@ -9,7 +9,7 @@ All three of these merges are techniques that Git offers for integrating changes
 ![image](https://github.com/QuinlanVic/Python_Homework_Assignments/assets/109174553/2d323d0f-1ea8-4e44-a7ee-dc7a1c5b7474)
 
 #### Git Rebase
-"Rebase" moves a set of commits so that it is situated on top of the base/master branch's latest commit. This results in all of the feature branch's commits (entire history) following the latest commit on the base/master branch, rewriting history. 
+"Rebase" moves a set of commits so that it is situated on top of the base/master branch's latest commit. This results in all of the feature branch's commits (entire history) following the latest commit on the base/master branch, rewriting history. It avoids merging commits and ensures that there are no conflicts while moving the feature branch's commits on top of the latest master branch's commit.  This helps you keep a clean version history as it is linear. This clean history makes debugging changes easy but "rebase" should be used  very carefully when collaborating with others as it can lead to them working with broken repositories. 
 
 ![image](https://github.com/QuinlanVic/Python_Homework_Assignments/assets/109174553/a8549868-d102-4758-83fa-6b0ea128a495)
 
@@ -35,7 +35,7 @@ and with their permission inflict changes to the main repository.
 - Forks are most commonly used to suggest changes to someone else's code or use someone else's code as a starting point/helpful resource for your own project.
 
 ### `git rebase -i`
-The `git rebase -i` command .  Alternatively, rebase has powerful history rewriting features.
+The `i` in the `git rebase -i` command stands for **interactive** and is different from your usual `git rebase` standard command. It allows you to handpick and alter your commits before placing it on top of the master branch's latest commit instead of attaching the feature branch's entire history. With interactive you can delete, update and even squash commits to together and therefore write a cleaner version control history improving your code's organisation and traceability.
 
 #### References 
 1. https://stackoverflow.com/questions/24939843/what-does-it-mean-to-fork-on-github
