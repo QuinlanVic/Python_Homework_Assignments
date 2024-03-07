@@ -4,7 +4,7 @@
 ### Git Merge vs Rebase vs Squash
 All three of these merges are techniques that Git offers for integrating changes from one branch to another. Each of these techniques has their own advantages and is suitable for specific situations. 
 #### Git Merge
-"Merge" intergrates all commits (complete history) of one branch (feature branch) to another, creating a new commit on the target branch called a "merge commit". "Merge" is always a forward moving change record (integrates changes of a branch with another to update the target branch and move forwards with development). "Merge" is the simplest and most commonly used strategy for merging branches but integrating the entire history of one branch into another can cause a lot of clutter and debugging these merge commits when things go wrong can be quite difficult. 
+"Merge" intergrates all commits (complete history) of one branch (feature branch) to another (target branch), creating a new commit on the target branch called a "merge commit". "Merge" is always a forward moving change record (integrates changes of a branch with another to update the target branch and move forwards with development). "Merge" is the simplest and most commonly used strategy for merging branches but integrating the entire history of one branch into another can cause a lot of clutter and debugging these merge commits, when things go wrong, can be quite difficult. 
 
 ![image](https://github.com/QuinlanVic/Python_Homework_Assignments/assets/109174553/2d323d0f-1ea8-4e44-a7ee-dc7a1c5b7474)
 
